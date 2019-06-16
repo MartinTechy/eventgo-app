@@ -1,0 +1,6 @@
+#amplify
+\#current-cloud-backend
+.config/local-*
+backend/amplify-meta.json
+backend/awscloudformation
+../awsconfiguration.json
