@@ -27,11 +27,19 @@ The repository for the EventGo mobile application
     ```bash
     npm install
     ```
-4. Start the project 
+4. Configure the Amplify project 
+    ```bash
+    amplify configure project
+    ```
+5. Pull the latest version of the amplify project
+    ```bash
+    amplify env pull
+    ```
+6. Start the project 
     ```bash 
     ionic serve
     ```
-5. Develop !
+7. Develop !
 
 
 ## License
