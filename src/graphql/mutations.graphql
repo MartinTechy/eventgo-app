@@ -1,0 +1,1621 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateEvent($input: CreateEventInput!) {
+  createEvent(input: $input) {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+mutation UpdateEvent($input: UpdateEventInput!) {
+  updateEvent(input: $input) {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+mutation DeleteEvent($input: DeleteEventInput!) {
+  deleteEvent(input: $input) {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+mutation CreateStuff($input: CreateStuffInput!) {
+  createStuff(input: $input) {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+mutation UpdateStuff($input: UpdateStuffInput!) {
+  updateStuff(input: $input) {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+mutation DeleteStuff($input: DeleteStuffInput!) {
+  deleteStuff(input: $input) {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+mutation CreateBringer($input: CreateBringerInput!) {
+  createBringer(input: $input) {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+mutation UpdateBringer($input: UpdateBringerInput!) {
+  updateBringer(input: $input) {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+mutation DeleteBringer($input: DeleteBringerInput!) {
+  deleteBringer(input: $input) {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+mutation CreateLocationProposal($input: CreateLocationProposalInput!) {
+  createLocationProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+mutation UpdateLocationProposal($input: UpdateLocationProposalInput!) {
+  updateLocationProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+mutation DeleteLocationProposal($input: DeleteLocationProposalInput!) {
+  deleteLocationProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+mutation CreateTimeProposal($input: CreateTimeProposalInput!) {
+  createTimeProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+mutation UpdateTimeProposal($input: UpdateTimeProposalInput!) {
+  updateTimeProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+mutation DeleteTimeProposal($input: DeleteTimeProposalInput!) {
+  deleteTimeProposal(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+mutation CreateVote($input: CreateVoteInput!) {
+  createVote(input: $input) {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation UpdateVote($input: UpdateVoteInput!) {
+  updateVote(input: $input) {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation DeleteVote($input: DeleteVoteInput!) {
+  deleteVote(input: $input) {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation CreateEventUsers($input: CreateEventUsersInput!) {
+  createEventUsers(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation UpdateEventUsers($input: UpdateEventUsersInput!) {
+  updateEventUsers(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation DeleteEventUsers($input: DeleteEventUsersInput!) {
+  deleteEventUsers(input: $input) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+mutation UpdateUser($input: UpdateUserInput!) {
+  updateUser(input: $input) {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+mutation DeleteUser($input: DeleteUserInput!) {
+  deleteUser(input: $input) {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+mutation CreateLocation($input: CreateLocationInput!) {
+  createLocation(input: $input) {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+mutation UpdateLocation($input: UpdateLocationInput!) {
+  updateLocation(input: $input) {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+mutation DeleteLocation($input: DeleteLocationInput!) {
+  deleteLocation(input: $input) {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+mutation CreateDocument($input: CreateDocumentInput!) {
+  createDocument(input: $input) {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}
+mutation UpdateDocument($input: UpdateDocumentInput!) {
+  updateDocument(input: $input) {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}
+mutation DeleteDocument($input: DeleteDocumentInput!) {
+  deleteDocument(input: $input) {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}

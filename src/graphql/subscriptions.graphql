@@ -1,0 +1,1621 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateEvent {
+  onCreateEvent {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+subscription OnUpdateEvent {
+  onUpdateEvent {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+subscription OnDeleteEvent {
+  onDeleteEvent {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+subscription OnCreateStuff {
+  onCreateStuff {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+subscription OnUpdateStuff {
+  onUpdateStuff {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+subscription OnDeleteStuff {
+  onDeleteStuff {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+subscription OnCreateBringer {
+  onCreateBringer {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+subscription OnUpdateBringer {
+  onUpdateBringer {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+subscription OnDeleteBringer {
+  onDeleteBringer {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+subscription OnCreateLocationProposal {
+  onCreateLocationProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+subscription OnUpdateLocationProposal {
+  onUpdateLocationProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+subscription OnDeleteLocationProposal {
+  onDeleteLocationProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+subscription OnCreateTimeProposal {
+  onCreateTimeProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+subscription OnUpdateTimeProposal {
+  onUpdateTimeProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+subscription OnDeleteTimeProposal {
+  onDeleteTimeProposal {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+subscription OnCreateVote {
+  onCreateVote {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnUpdateVote {
+  onUpdateVote {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnDeleteVote {
+  onDeleteVote {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnCreateEventUsers {
+  onCreateEventUsers {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnUpdateEventUsers {
+  onUpdateEventUsers {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnDeleteEventUsers {
+  onDeleteEventUsers {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+subscription OnCreateLocation {
+  onCreateLocation {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+subscription OnUpdateLocation {
+  onUpdateLocation {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+subscription OnDeleteLocation {
+  onDeleteLocation {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+subscription OnCreateDocument {
+  onCreateDocument {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}
+subscription OnUpdateDocument {
+  onUpdateDocument {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}
+subscription OnDeleteDocument {
+  onDeleteDocument {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}

@@ -1,0 +1,108 @@
+type Event @model {
+  id: ID!
+  title: String!
+  description: String
+  coverImage: Document
+  eventLocation: Location
+  startDate: String
+  endDate: String
+  timeProposals: [TimeProposal] @connection(name: "EventTimeProposal")
+  locationProposals: [LocationProposal] @connection(name: "EventLocationProposal")
+  guests: [EventUsers] @connection(name: "EventUsers")
+  creator: User! @connection(name: "UserOwnEvents")
+  keywords: [String]
+  visibility: Visibility!
+  stuffs: [Stuff]
+  documents: [Document]
+}
+
+type Stuff @model {
+  id: ID!
+  name: String!
+  quantityRequired: Int
+  unit: String
+  bringers: [Bringer]
+}
+
+type Bringer @model {
+  id: ID!
+  user: User!
+  quantity: Int!
+}
+
+type LocationProposal @model {
+  id: ID!
+  event: Event! @connection(name: "EventLocationProposal")
+  proposedLocation: Location!
+}
+
+type TimeProposal @model {
+  id: ID!
+  event: Event! @connection(name: "EventTimeProposal")
+  proposedTime: String!
+}
+
+type Vote @model {
+  id: ID!
+  value: String
+  userId: User
+}
+
+type EventUsers @model {
+  id: ID!
+  event: Event! @connection(name: "EventUsers")
+  user: User! @connection(name: "UserEvents")
+}
+
+type User @model {
+  id: ID!
+  userIdCognitoPool: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  address: Location
+  gender: String
+  phoneNumber: String
+  birthDate: String
+  language: String!
+  favoriteLocations: [Location]
+  events: [EventUsers] @connection(name: "UserEvents")
+  ownEvents: [Event] @connection(name: "UserOwnEvents")
+}
+
+type Location @model {
+  id: ID!
+  latitude: String
+  longitude: String
+  address: String
+  number: Int
+  zipcode: Int
+  city: String
+  country: String
+}
+
+type Document @model {
+id: ID!
+name: String
+owner: String
+visibility: Visibility
+file: S3Object
+createdAt: String
+}
+
+type S3Object {
+  bucket: String!
+  key: String!
+  region: String!
+  filename: String
+}
+
+enum Visibility {
+public
+private
+}
+
+
+
+
+

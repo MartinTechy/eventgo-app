@@ -2,24 +2,15 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
-    "aws_cognito_identity_pool_id": "eu-central-1:48657586-2a8b-4891-b0fc-23d119fdd9d7",
+    "aws_cognito_identity_pool_id": "eu-central-1:75b2adcd-1704-4996-bd37-1dc5ca828731",
     "aws_cognito_region": "eu-central-1",
-    "aws_user_pools_id": "eu-central-1_gEjaFyt2U",
-    "aws_user_pools_web_client_id": "529nij9k9b701tl7981hg592u2",
-    "oauth": {
-        "domain": "eventgo-dev.auth.eu-central-1.amazoncognito.com",
-        "scope": [
-            "phone",
-            "email",
-            "openid",
-            "profile",
-            "aws.cognito.signin.user.admin"
-        ],
-        "redirectSignIn": "myapp://",
-        "redirectSignOut": "myapp://",
-        "responseType": "code"
-    },
-    "federationTarget": "COGNITO_USER_POOLS"
+    "aws_user_pools_id": "eu-central-1_qq3sAkS75",
+    "aws_user_pools_web_client_id": "6vtncoktu46n5rith8dm504g17",
+    "oauth": {},
+    "federationTarget": "COGNITO_USER_POOLS",
+    "aws_appsync_graphqlEndpoint": "https://ycbvsspcfvg2hk4xdvfyacxb2u.appsync-api.eu-central-1.amazonaws.com/graphql",
+    "aws_appsync_region": "eu-central-1",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
 };
 
 

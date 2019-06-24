@@ -1,5 +1,5 @@
 {
-    "projectName": "eventgo",
+    "projectName": "eventgo-app",
     "version": "2.0",
     "frontend": "javascript",
     "javascript": {
@@ -7,7 +7,7 @@
         "config": {
             "SourceDir": "src",
             "DistributionDir": "www",
-            "BuildCommand": "npm run-script build",
+            "BuildCommand": "npm.cmd run-script build",
             "StartCommand": "ionic serve"
         }
     },

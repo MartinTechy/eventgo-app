@@ -1,0 +1,848 @@
+# this is an auto generated file. This will be overwritten
+query GetEvent($id: ID!) {
+  getEvent(id: $id) {
+    id
+    title
+    description
+    coverImage {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    eventLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    startDate
+    endDate
+    timeProposals {
+      items {
+        id
+        proposedTime
+      }
+      nextToken
+    }
+    locationProposals {
+      items {
+        id
+      }
+      nextToken
+    }
+    guests {
+      items {
+        id
+      }
+      nextToken
+    }
+    creator {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    keywords
+    visibility
+    stuffs {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    documents {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+  }
+}
+query ListEvents(
+  $filter: ModelEventFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    nextToken
+  }
+}
+query GetStuff($id: ID!) {
+  getStuff(id: $id) {
+    id
+    name
+    quantityRequired
+    unit
+    bringers {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+  }
+}
+query ListStuffs(
+  $filter: ModelStuffFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStuffs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      quantityRequired
+      unit
+      bringers {
+        id
+        quantity
+      }
+    }
+    nextToken
+  }
+}
+query GetBringer($id: ID!) {
+  getBringer(id: $id) {
+    id
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    quantity
+  }
+}
+query ListBringers(
+  $filter: ModelBringerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBringers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      quantity
+    }
+    nextToken
+  }
+}
+query GetLocationProposal($id: ID!) {
+  getLocationProposal(id: $id) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedLocation {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+  }
+}
+query ListLocationProposals(
+  $filter: ModelLocationProposalFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listLocationProposals(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      proposedLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+    }
+    nextToken
+  }
+}
+query GetTimeProposal($id: ID!) {
+  getTimeProposal(id: $id) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    proposedTime
+  }
+}
+query ListTimeProposals(
+  $filter: ModelTimeProposalFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTimeProposals(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      proposedTime
+    }
+    nextToken
+  }
+}
+query GetVote($id: ID!) {
+  getVote(id: $id) {
+    id
+    value
+    userId {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+query ListVotes(
+  $filter: ModelVoteFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listVotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      value
+      userId {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+    }
+    nextToken
+  }
+}
+query GetEventUsers($id: ID!) {
+  getEventUsers(id: $id) {
+    id
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    user {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+  }
+}
+query ListEventUserss(
+  $filter: ModelEventUsersFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEventUserss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      user {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+    }
+    nextToken
+  }
+}
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    userIdCognitoPool
+    firstName
+    lastName
+    email
+    address {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    gender
+    phoneNumber
+    birthDate
+    language
+    favoriteLocations {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    events {
+      items {
+        id
+      }
+      nextToken
+    }
+    ownEvents {
+      items {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      nextToken
+    }
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+query GetLocation($id: ID!) {
+  getLocation(id: $id) {
+    id
+    latitude
+    longitude
+    address
+    number
+    zipcode
+    city
+    country
+  }
+}
+query ListLocations(
+  $filter: ModelLocationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listLocations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      latitude
+      longitude
+      address
+      number
+      zipcode
+      city
+      country
+    }
+    nextToken
+  }
+}
+query GetDocument($id: ID!) {
+  getDocument(id: $id) {
+    id
+    name
+    owner
+    visibility
+    file {
+      bucket
+      key
+      region
+      filename
+    }
+    createdAt
+  }
+}
+query ListDocuments(
+  $filter: ModelDocumentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listDocuments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      owner
+      visibility
+      file {
+        bucket
+        key
+        region
+        filename
+      }
+      createdAt
+    }
+    nextToken
+  }
+}
