@@ -14,6 +14,7 @@ import Auth from '@aws-amplify/auth';
 import Interactions from '@aws-amplify/interactions';
 import Storage from '@aws-amplify/storage';
 import { APIService } from './API.service';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,8 @@ import { APIService } from './API.service';
         });
       }
     },
-    APIService
+    APIService, 
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

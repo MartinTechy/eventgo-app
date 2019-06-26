@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
-  { path: 'events', loadChildren: './events/events.module#EventsPageModule' },
-  { path: 'friends', loadChildren: './friends/friends.module#FriendsPageModule' },
-  { path: 'messages', loadChildren: './messages/messages.module#MessagesPageModule' },
-  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule', canLoad: [AuthGuard] },
+  { path: 'events', loadChildren: './events/events.module#EventsPageModule', canLoad: [AuthGuard]  },
+  { path: 'friends', loadChildren: './friends/friends.module#FriendsPageModule', canLoad: [AuthGuard]  },
+  { path: 'messages', loadChildren: './messages/messages.module#MessagesPageModule', canLoad: [AuthGuard]  },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule', canLoad: [AuthGuard]  },
 ];
 
 @NgModule({
