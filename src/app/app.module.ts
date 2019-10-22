@@ -13,7 +13,7 @@ import { AmplifyAngularModule, AmplifyService, AmplifyModules } from 'aws-amplif
 import Auth from '@aws-amplify/auth';
 import Interactions from '@aws-amplify/interactions';
 import Storage from '@aws-amplify/storage';
-import { APIService } from './API.service';
+import { APIService } from './api/API.service';
 import { AuthService } from './auth/auth.service';
 
 @NgModule({

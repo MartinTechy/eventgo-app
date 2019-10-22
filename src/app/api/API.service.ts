@@ -13,6 +13,7 @@ export type CreateEventInput = {
   endDate?: string | null;
   keywords?: Array<string | null> | null;
   visibility: Visibility;
+  eventEventLocationId?: string | null;
   eventCreatorId: string;
 };
 
@@ -29,6 +30,7 @@ export type UpdateEventInput = {
   endDate?: string | null;
   keywords?: Array<string | null> | null;
   visibility?: Visibility | null;
+  eventEventLocationId?: string | null;
   eventCreatorId?: string | null;
 };
 
@@ -138,6 +140,7 @@ export type CreateUserInput = {
   phoneNumber?: string | null;
   birthDate?: string | null;
   language: string;
+  userAddressId?: string | null;
 };
 
 export type UpdateUserInput = {
@@ -150,6 +153,7 @@ export type UpdateUserInput = {
   phoneNumber?: string | null;
   birthDate?: string | null;
   language?: string | null;
+  userAddressId?: string | null;
 };
 
 export type DeleteUserInput = {
@@ -165,6 +169,9 @@ export type CreateLocationInput = {
   zipcode?: number | null;
   city?: string | null;
   country?: string | null;
+  locationEventId?: string | null;
+  locationAddressUserId?: string | null;
+  locationFavoriteLocationUserId?: string | null;
 };
 
 export type UpdateLocationInput = {
@@ -176,6 +183,9 @@ export type UpdateLocationInput = {
   zipcode?: number | null;
   city?: string | null;
   country?: string | null;
+  locationEventId?: string | null;
+  locationAddressUserId?: string | null;
+  locationFavoriteLocationUserId?: string | null;
 };
 
 export type DeleteLocationInput = {
@@ -385,6 +395,40 @@ export type CreateEventMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -435,17 +479,10 @@ export type CreateEventMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -516,6 +553,40 @@ export type UpdateEventMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -566,17 +637,10 @@ export type UpdateEventMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -647,6 +711,40 @@ export type DeleteEventMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -697,17 +795,10 @@ export type DeleteEventMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -848,17 +939,10 @@ export type CreateBringerMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -896,17 +980,10 @@ export type UpdateBringerMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -944,17 +1021,10 @@ export type DeleteBringerMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1048,6 +1118,40 @@ export type CreateLocationProposalMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -1132,6 +1236,40 @@ export type UpdateLocationProposalMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -1216,6 +1354,40 @@ export type DeleteLocationProposalMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -1467,17 +1639,10 @@ export type CreateVoteMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1515,17 +1680,10 @@ export type UpdateVoteMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1563,17 +1721,10 @@ export type DeleteVoteMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1678,17 +1829,10 @@ export type CreateEventUsersMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1793,17 +1937,10 @@ export type UpdateEventUsersMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1908,17 +2045,10 @@ export type DeleteEventUsersMutation = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -1947,22 +2077,60 @@ export type CreateUserMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -2004,22 +2172,60 @@ export type UpdateUserMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -2061,22 +2267,60 @@ export type DeleteUserMutation = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -2111,6 +2355,144 @@ export type CreateLocationMutation = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type UpdateLocationMutation = {
@@ -2123,6 +2505,144 @@ export type UpdateLocationMutation = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type DeleteLocationMutation = {
@@ -2135,6 +2655,144 @@ export type DeleteLocationMutation = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type CreateDocumentMutation = {
@@ -2215,6 +2873,40 @@ export type GetEventQuery = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -2265,17 +2957,10 @@ export type GetEventQuery = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -2456,17 +3141,10 @@ export type GetBringerQuery = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -2582,6 +3260,40 @@ export type GetLocationProposalQuery = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -2735,17 +3447,10 @@ export type GetVoteQuery = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -2872,17 +3577,10 @@ export type GetEventUsersQuery = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -2942,22 +3640,60 @@ export type GetUserQuery = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -3006,17 +3742,10 @@ export type ListUsersQuery = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3039,6 +3768,144 @@ export type GetLocationQuery = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type ListLocationsQuery = {
@@ -3053,6 +3920,40 @@ export type ListLocationsQuery = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null> | null;
   nextToken: string | null;
 };
@@ -3123,6 +4024,40 @@ export type OnCreateEventSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -3173,17 +4108,10 @@ export type OnCreateEventSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3254,6 +4182,40 @@ export type OnUpdateEventSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -3304,17 +4266,10 @@ export type OnUpdateEventSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3385,6 +4340,40 @@ export type OnDeleteEventSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   startDate: string | null;
   endDate: string | null;
@@ -3435,17 +4424,10 @@ export type OnDeleteEventSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3586,17 +4568,10 @@ export type OnCreateBringerSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3634,17 +4609,10 @@ export type OnUpdateBringerSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3682,17 +4650,10 @@ export type OnDeleteBringerSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -3786,6 +4747,40 @@ export type OnCreateLocationProposalSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -3870,6 +4865,40 @@ export type OnUpdateLocationProposalSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -3954,6 +4983,40 @@ export type OnDeleteLocationProposalSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   };
 };
 
@@ -4205,17 +5268,10 @@ export type OnCreateVoteSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4253,17 +5309,10 @@ export type OnUpdateVoteSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4301,17 +5350,10 @@ export type OnDeleteVoteSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4416,17 +5458,10 @@ export type OnCreateEventUsersSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4531,17 +5566,10 @@ export type OnUpdateEventUsersSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4646,17 +5674,10 @@ export type OnDeleteEventUsersSubscription = {
     phoneNumber: string | null;
     birthDate: string | null;
     language: string;
-    favoriteLocations: Array<{
-      __typename: "Location";
-      id: string;
-      latitude: string | null;
-      longitude: string | null;
-      address: string | null;
-      number: number | null;
-      zipcode: number | null;
-      city: string | null;
-      country: string | null;
-    } | null> | null;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
     events: {
       __typename: "ModelEventUsersConnection";
       nextToken: string | null;
@@ -4685,22 +5706,60 @@ export type OnCreateUserSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -4742,22 +5801,60 @@ export type OnUpdateUserSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -4799,22 +5896,60 @@ export type OnDeleteUserSubscription = {
     zipcode: number | null;
     city: string | null;
     country: string | null;
+    event: {
+      __typename: "Event";
+      id: string;
+      title: string;
+      description: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      keywords: Array<string | null> | null;
+      visibility: Visibility;
+    } | null;
+    addressUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
+    favoriteLocationUser: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    } | null;
   } | null;
   gender: string | null;
   phoneNumber: string | null;
   birthDate: string | null;
   language: string;
-  favoriteLocations: Array<{
-    __typename: "Location";
-    id: string;
-    latitude: string | null;
-    longitude: string | null;
-    address: string | null;
-    number: number | null;
-    zipcode: number | null;
-    city: string | null;
-    country: string | null;
-  } | null> | null;
+  favoriteLocations: {
+    __typename: "ModelLocationConnection";
+    items: Array<{
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
   events: {
     __typename: "ModelEventUsersConnection";
     items: Array<{
@@ -4849,6 +5984,144 @@ export type OnCreateLocationSubscription = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type OnUpdateLocationSubscription = {
@@ -4861,6 +6134,144 @@ export type OnUpdateLocationSubscription = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type OnDeleteLocationSubscription = {
@@ -4873,6 +6284,144 @@ export type OnDeleteLocationSubscription = {
   zipcode: number | null;
   city: string | null;
   country: string | null;
+  event: {
+    __typename: "Event";
+    id: string;
+    title: string;
+    description: string | null;
+    coverImage: {
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null;
+    eventLocation: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    startDate: string | null;
+    endDate: string | null;
+    timeProposals: {
+      __typename: "ModelTimeProposalConnection";
+      nextToken: string | null;
+    } | null;
+    locationProposals: {
+      __typename: "ModelLocationProposalConnection";
+      nextToken: string | null;
+    } | null;
+    guests: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    creator: {
+      __typename: "User";
+      id: string;
+      userIdCognitoPool: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string | null;
+      phoneNumber: string | null;
+      birthDate: string | null;
+      language: string;
+    };
+    keywords: Array<string | null> | null;
+    visibility: Visibility;
+    stuffs: Array<{
+      __typename: "Stuff";
+      id: string;
+      name: string;
+      quantityRequired: number | null;
+      unit: string | null;
+    } | null> | null;
+    documents: Array<{
+      __typename: "Document";
+      id: string;
+      name: string | null;
+      owner: string | null;
+      visibility: Visibility | null;
+      createdAt: string | null;
+    } | null> | null;
+  } | null;
+  addressUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
+  favoriteLocationUser: {
+    __typename: "User";
+    id: string;
+    userIdCognitoPool: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      __typename: "Location";
+      id: string;
+      latitude: string | null;
+      longitude: string | null;
+      address: string | null;
+      number: number | null;
+      zipcode: number | null;
+      city: string | null;
+      country: string | null;
+    } | null;
+    gender: string | null;
+    phoneNumber: string | null;
+    birthDate: string | null;
+    language: string;
+    favoriteLocations: {
+      __typename: "ModelLocationConnection";
+      nextToken: string | null;
+    } | null;
+    events: {
+      __typename: "ModelEventUsersConnection";
+      nextToken: string | null;
+    } | null;
+    ownEvents: {
+      __typename: "ModelEventConnection";
+      nextToken: string | null;
+    } | null;
+  } | null;
 };
 
 export type OnCreateDocumentSubscription = {
@@ -4959,6 +6508,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -5011,14 +6594,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5100,6 +6676,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -5152,14 +6762,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5241,6 +6844,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -5293,14 +6930,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5486,14 +7116,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5546,14 +7169,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5606,14 +7222,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -5720,6 +7329,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`;
@@ -5816,6 +7459,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`;
@@ -5912,6 +7589,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`;
@@ -6211,14 +7922,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6269,14 +7973,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6327,14 +8024,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6454,14 +8144,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6581,14 +8264,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6708,14 +8384,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -6755,6 +8424,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -6762,14 +8465,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -6822,6 +8529,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -6829,14 +8570,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -6889,6 +8634,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -6896,14 +8675,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -6951,6 +8734,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6975,6 +8896,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6999,6 +9058,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7125,6 +9322,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -7177,14 +9408,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -7430,14 +9654,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -7585,6 +9802,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`;
@@ -7802,14 +10053,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -7970,14 +10214,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8069,6 +10306,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -8076,14 +10347,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -8149,14 +10424,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8197,6 +10465,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8225,6 +10631,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           nextToken
         }
@@ -8344,6 +10784,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -8396,14 +10870,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8481,6 +10948,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -8533,14 +11034,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8618,6 +11112,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           startDate
           endDate
@@ -8670,14 +11198,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8847,14 +11368,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8903,14 +11417,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -8959,14 +11466,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -9069,6 +11569,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`
@@ -9161,6 +11695,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`
@@ -9253,6 +11821,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
         }
       }`
@@ -9536,14 +12138,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -9590,14 +12185,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -9644,14 +12232,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -9767,14 +12348,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -9890,14 +12464,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -10013,14 +12580,7 @@ export class APIService {
             language
             favoriteLocations {
               __typename
-              id
-              latitude
-              longitude
-              address
-              number
-              zipcode
-              city
-              country
+              nextToken
             }
             events {
               __typename
@@ -10056,6 +12616,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -10063,14 +12657,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -10119,6 +12717,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -10126,14 +12758,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -10182,6 +12818,40 @@ export class APIService {
             zipcode
             city
             country
+            event {
+              __typename
+              id
+              title
+              description
+              startDate
+              endDate
+              keywords
+              visibility
+            }
+            addressUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            favoriteLocationUser {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
           }
           gender
           phoneNumber
@@ -10189,14 +12859,18 @@ export class APIService {
           language
           favoriteLocations {
             __typename
-            id
-            latitude
-            longitude
-            address
-            number
-            zipcode
-            city
-            country
+            items {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            nextToken
           }
           events {
             __typename
@@ -10240,6 +12914,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`
     )
@@ -10260,6 +13072,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`
     )
@@ -10280,6 +13230,144 @@ export class APIService {
           zipcode
           city
           country
+          event {
+            __typename
+            id
+            title
+            description
+            coverImage {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+            eventLocation {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            startDate
+            endDate
+            timeProposals {
+              __typename
+              nextToken
+            }
+            locationProposals {
+              __typename
+              nextToken
+            }
+            guests {
+              __typename
+              nextToken
+            }
+            creator {
+              __typename
+              id
+              userIdCognitoPool
+              firstName
+              lastName
+              email
+              gender
+              phoneNumber
+              birthDate
+              language
+            }
+            keywords
+            visibility
+            stuffs {
+              __typename
+              id
+              name
+              quantityRequired
+              unit
+            }
+            documents {
+              __typename
+              id
+              name
+              owner
+              visibility
+              createdAt
+            }
+          }
+          addressUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
+          favoriteLocationUser {
+            __typename
+            id
+            userIdCognitoPool
+            firstName
+            lastName
+            email
+            address {
+              __typename
+              id
+              latitude
+              longitude
+              address
+              number
+              zipcode
+              city
+              country
+            }
+            gender
+            phoneNumber
+            birthDate
+            language
+            favoriteLocations {
+              __typename
+              nextToken
+            }
+            events {
+              __typename
+              nextToken
+            }
+            ownEvents {
+              __typename
+              nextToken
+            }
+          }
         }
       }`
     )

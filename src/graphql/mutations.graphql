@@ -26,6 +26,37 @@ mutation CreateEvent($input: CreateEventInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     startDate
     endDate
@@ -69,14 +100,7 @@ mutation CreateEvent($input: CreateEventInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -139,6 +163,37 @@ mutation UpdateEvent($input: UpdateEventInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     startDate
     endDate
@@ -182,14 +237,7 @@ mutation UpdateEvent($input: UpdateEventInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -252,6 +300,37 @@ mutation DeleteEvent($input: DeleteEventInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     startDate
     endDate
@@ -295,14 +374,7 @@ mutation DeleteEvent($input: DeleteEventInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -431,14 +503,7 @@ mutation CreateBringer($input: CreateBringerInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -474,14 +539,7 @@ mutation UpdateBringer($input: UpdateBringerInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -517,14 +575,7 @@ mutation DeleteBringer($input: DeleteBringerInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -607,6 +658,37 @@ mutation CreateLocationProposal($input: CreateLocationProposalInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
   }
 }
@@ -681,6 +763,37 @@ mutation UpdateLocationProposal($input: UpdateLocationProposalInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
   }
 }
@@ -755,6 +868,37 @@ mutation DeleteLocationProposal($input: DeleteLocationProposalInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
   }
 }
@@ -978,14 +1122,7 @@ mutation CreateVote($input: CreateVoteInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1021,14 +1158,7 @@ mutation UpdateVote($input: UpdateVoteInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1064,14 +1194,7 @@ mutation DeleteVote($input: DeleteVoteInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1165,14 +1288,7 @@ mutation CreateEventUsers($input: CreateEventUsersInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1266,14 +1382,7 @@ mutation UpdateEventUsers($input: UpdateEventUsersInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1367,14 +1476,7 @@ mutation DeleteEventUsers($input: DeleteEventUsersInput!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -1401,20 +1503,54 @@ mutation CreateUser($input: CreateUserInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     gender
     phoneNumber
     birthDate
     language
     favoriteLocations {
-      id
-      latitude
-      longitude
-      address
-      number
-      zipcode
-      city
-      country
+      items {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      nextToken
     }
     events {
       items {
@@ -1452,20 +1588,54 @@ mutation UpdateUser($input: UpdateUserInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     gender
     phoneNumber
     birthDate
     language
     favoriteLocations {
-      id
-      latitude
-      longitude
-      address
-      number
-      zipcode
-      city
-      country
+      items {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      nextToken
     }
     events {
       items {
@@ -1503,20 +1673,54 @@ mutation DeleteUser($input: DeleteUserInput!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     gender
     phoneNumber
     birthDate
     language
     favoriteLocations {
-      id
-      latitude
-      longitude
-      address
-      number
-      zipcode
-      city
-      country
+      items {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      nextToken
     }
     events {
       items {
@@ -1548,6 +1752,125 @@ mutation CreateLocation($input: CreateLocationInput!) {
     zipcode
     city
     country
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    addressUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    favoriteLocationUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
   }
 }
 mutation UpdateLocation($input: UpdateLocationInput!) {
@@ -1560,6 +1883,125 @@ mutation UpdateLocation($input: UpdateLocationInput!) {
     zipcode
     city
     country
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    addressUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    favoriteLocationUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
   }
 }
 mutation DeleteLocation($input: DeleteLocationInput!) {
@@ -1572,6 +2014,125 @@ mutation DeleteLocation($input: DeleteLocationInput!) {
     zipcode
     city
     country
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    addressUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    favoriteLocationUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
   }
 }
 mutation CreateDocument($input: CreateDocumentInput!) {

@@ -3,7 +3,7 @@ type Event @model {
   title: String!
   description: String
   coverImage: Document
-  eventLocation: Location
+  eventLocation: Location @connection(name: "EventLocation")
   startDate: String
   endDate: String
   timeProposals: [TimeProposal] @connection(name: "EventTimeProposal")
@@ -60,12 +60,12 @@ type User @model {
   firstName: String!
   lastName: String!
   email: String!
-  address: Location
+  address: Location @connection(name: "UserAddress")
   gender: String
   phoneNumber: String
   birthDate: String
   language: String!
-  favoriteLocations: [Location]
+  favoriteLocations: [Location] @connection(name: "UserFavoriteLocations")
   events: [EventUsers] @connection(name: "UserEvents")
   ownEvents: [Event] @connection(name: "UserOwnEvents")
 }
@@ -79,6 +79,9 @@ type Location @model {
   zipcode: Int
   city: String
   country: String
+  event: Event @connection(name: "EventLocation")
+  addressUser: User @connection(name: "UserAddress")
+  favoriteLocationUser: User @connection(name: "UserFavoriteLocations")
 }
 
 type Document @model {

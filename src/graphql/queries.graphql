@@ -26,6 +26,37 @@ query GetEvent($id: ID!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     startDate
     endDate
@@ -69,14 +100,7 @@ query GetEvent($id: ID!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -246,14 +270,7 @@ query GetBringer($id: ID!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -360,6 +377,37 @@ query GetLocationProposal($id: ID!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
   }
 }
@@ -506,14 +554,7 @@ query GetVote($id: ID!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -631,14 +672,7 @@ query GetEventUsers($id: ID!) {
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -697,20 +731,54 @@ query GetUser($id: ID!) {
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     gender
     phoneNumber
     birthDate
     language
     favoriteLocations {
-      id
-      latitude
-      longitude
-      address
-      number
-      zipcode
-      city
-      country
+      items {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      nextToken
     }
     events {
       items {
@@ -759,14 +827,7 @@ query ListUsers(
       birthDate
       language
       favoriteLocations {
-        id
-        latitude
-        longitude
-        address
-        number
-        zipcode
-        city
-        country
+        nextToken
       }
       events {
         nextToken
@@ -788,6 +849,125 @@ query GetLocation($id: ID!) {
     zipcode
     city
     country
+    event {
+      id
+      title
+      description
+      coverImage {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+      eventLocation {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      startDate
+      endDate
+      timeProposals {
+        nextToken
+      }
+      locationProposals {
+        nextToken
+      }
+      guests {
+        nextToken
+      }
+      creator {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      keywords
+      visibility
+      stuffs {
+        id
+        name
+        quantityRequired
+        unit
+      }
+      documents {
+        id
+        name
+        owner
+        visibility
+        createdAt
+      }
+    }
+    addressUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
+    favoriteLocationUser {
+      id
+      userIdCognitoPool
+      firstName
+      lastName
+      email
+      address {
+        id
+        latitude
+        longitude
+        address
+        number
+        zipcode
+        city
+        country
+      }
+      gender
+      phoneNumber
+      birthDate
+      language
+      favoriteLocations {
+        nextToken
+      }
+      events {
+        nextToken
+      }
+      ownEvents {
+        nextToken
+      }
+    }
   }
 }
 query ListLocations(
@@ -805,6 +985,37 @@ query ListLocations(
       zipcode
       city
       country
+      event {
+        id
+        title
+        description
+        startDate
+        endDate
+        keywords
+        visibility
+      }
+      addressUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
+      favoriteLocationUser {
+        id
+        userIdCognitoPool
+        firstName
+        lastName
+        email
+        gender
+        phoneNumber
+        birthDate
+        language
+      }
     }
     nextToken
   }
